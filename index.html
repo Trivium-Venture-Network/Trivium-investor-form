@@ -863,10 +863,10 @@
 // ─────────────────────────────────────────────────────────────────────
 //  CONFIGURATION — replace this with your deployed Apps Script URL
 // ─────────────────────────────────────────────────────────────────────
-const APPS_SCRIPT_URL = 'https://script.google.com/a/macros/triviumvn.com/s/AKfycbw0H-thlzKmAZtFJVWetgt_ylD9ElErjZ-edrJ9SlO15CTwK2hCpaOlUsKix5VLOnlJ/exec';
+const APPS_SCRIPT_URL = 'YOUR_APPS_SCRIPT_URL_HERE';
 
 // Hide config banner once real URL is set
-if (APPS_SCRIPT_URL !== 'https://script.google.com/a/macros/triviumvn.com/s/AKfycbw0H-thlzKmAZtFJVWetgt_ylD9ElErjZ-edrJ9SlO15CTwK2hCpaOlUsKix5VLOnlJ/exec') {
+if (APPS_SCRIPT_URL !== 'YOUR_APPS_SCRIPT_URL_HERE') {
 }
 
 // ─── Step navigation ───────────────────────────────────────────────
@@ -953,7 +953,7 @@ async function submitForm() {
 
   const data = getFormData();
 
-  if (APPS_SCRIPT_URL === 'https://script.google.com/a/macros/triviumvn.com/s/AKfycbw0H-thlzKmAZtFJVWetgt_ylD9ElErjZ-edrJ9SlO15CTwK2hCpaOlUsKix5VLOnlJ/exec') {
+  if (APPS_SCRIPT_URL === 'YOUR_APPS_SCRIPT_URL_HERE') {
     // Demo mode: simulate success
     console.table(data);
     await new Promise(r => setTimeout(r, 1200));
