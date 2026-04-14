@@ -30,7 +30,7 @@
     background: var(--bg);
     color: var(--text);
     min-height: 100vh;
-    background-image: linear-gradient(to bottom, #D4BC98 0%, var(--bg) 280px);
+    background-image: linear-gradient(to bottom, #C09A82 0%, var(--bg) 340px);
     position: relative;
     overflow-x: hidden;
   }
@@ -51,7 +51,7 @@
   .hero {
     position: relative;
     overflow: hidden;
-    background: linear-gradient(160deg, #EAD8C2 0%, #DECAA8 45%, #D4BC98 100%);
+    background: linear-gradient(180deg, #7A5540 0%, #8B6650 60%, #A07460 100%);
     padding: 60px 24px 72px;
     text-align: center;
     z-index: 1;
@@ -105,7 +105,7 @@
     font-family: 'Cormorant Garamond', serif;
     font-size: clamp(32px, 5.5vw, 48px);
     font-weight: 300;
-    color: #2E1E14;
+    color: rgba(251,249,247,0.95);
     line-height: 1.2;
     margin-bottom: 14px;
     letter-spacing: 0.01em;
@@ -114,7 +114,7 @@
 
   .hero h1 em {
     font-style: italic;
-    color: #B87A28;
+    color: #EFAC4D;
   }
 
   .hero-divider {
@@ -122,7 +122,7 @@
     z-index: 2;
     width: 48px;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(160,100,30,0.5), transparent);
+    background: linear-gradient(90deg, transparent, rgba(239,172,77,0.5), transparent);
     margin: 18px auto;
     animation: fadeUp 0.7s 0.15s ease both;
   }
@@ -131,7 +131,7 @@
     position: relative;
     z-index: 2;
     font-size: 14.5px;
-    color: #7A5A42;
+    color: rgba(244,214,165,0.82);
     max-width: 440px;
     margin: 0 auto;
     line-height: 1.75;
@@ -145,8 +145,8 @@
     content: '';
     position: absolute;
     bottom: 0; left: 0; right: 0;
-    height: 90px;
-    background: linear-gradient(to bottom, transparent 0%, rgba(212,195,168,0.4) 40%, var(--bg) 100%);
+    height: 120px;
+    background: linear-gradient(to bottom, transparent 0%, rgba(160,116,96,0.5) 35%, var(--bg) 100%);
     z-index: 2;
   }
 
@@ -611,16 +611,16 @@
         <circle cx="22" cy="48" r="20" fill="#3A1A0A" opacity="0.5"  clip-path="url(#rightCircleClip)"/>
 
         <!-- Subtle ring highlights -->
-        <circle cx="36" cy="24" r="20" fill="none" stroke="rgba(0,0,0,0.08)" stroke-width="0.8"/>
-        <circle cx="22" cy="48" r="20" fill="none" stroke="rgba(0,0,0,0.06)" stroke-width="0.8"/>
-        <circle cx="50" cy="48" r="20" fill="none" stroke="rgba(0,0,0,0.06)" stroke-width="0.8"/>
+        <circle cx="36" cy="24" r="20" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.8"/>
+        <circle cx="22" cy="48" r="20" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+        <circle cx="50" cy="48" r="20" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
 
         <!-- Vertical divider -->
-        <line x1="82" y1="14" x2="82" y2="58" stroke="rgba(100,70,45,0.25)" stroke-width="1"/>
+        <line x1="82" y1="14" x2="82" y2="58" stroke="rgba(244,214,165,0.25)" stroke-width="1"/>
 
         <!-- Wordmark -->
-        <text x="96" y="38" font-family="'Cormorant Garamond', Georgia, serif" font-size="24" font-weight="600" letter-spacing="1.5" fill="#2E1E14">Trivium</text>
-        <text x="97" y="54" font-family="'Outfit', sans-serif" font-size="9.5" font-weight="300" letter-spacing="2.8" fill="#7A5A42">VENTURE NETWORK</text>
+        <text x="96" y="38" font-family="'Cormorant Garamond', Georgia, serif" font-size="24" font-weight="600" letter-spacing="1.5" fill="rgba(251,249,247,0.96)">Trivium</text>
+        <text x="97" y="54" font-family="'Outfit', sans-serif" font-size="9.5" font-weight="300" letter-spacing="2.8" fill="rgba(244,214,165,0.78)">VENTURE NETWORK</text>
       </svg>
     </div>
 
@@ -863,10 +863,10 @@
 // ─────────────────────────────────────────────────────────────────────
 //  CONFIGURATION — replace this with your deployed Apps Script URL
 // ─────────────────────────────────────────────────────────────────────
-const APPS_SCRIPT_URL = 'YOUR_APPS_SCRIPT_URL_HERE';
+const APPS_SCRIPT_URL = 'https://script.google.com/a/macros/triviumvn.com/s/AKfycbw0H-thlzKmAZtFJVWetgt_ylD9ElErjZ-edrJ9SlO15CTwK2hCpaOlUsKix5VLOnlJ/exec';
 
 // Hide config banner once real URL is set
-if (APPS_SCRIPT_URL !== 'YOUR_APPS_SCRIPT_URL_HERE') {
+if (APPS_SCRIPT_URL !== 'https://script.google.com/a/macros/triviumvn.com/s/AKfycbw0H-thlzKmAZtFJVWetgt_ylD9ElErjZ-edrJ9SlO15CTwK2hCpaOlUsKix5VLOnlJ/exec') {
 }
 
 // ─── Step navigation ───────────────────────────────────────────────
@@ -953,7 +953,7 @@ async function submitForm() {
 
   const data = getFormData();
 
-  if (APPS_SCRIPT_URL === 'YOUR_APPS_SCRIPT_URL_HERE') {
+  if (APPS_SCRIPT_URL === 'https://script.google.com/a/macros/triviumvn.com/s/AKfycbw0H-thlzKmAZtFJVWetgt_ylD9ElErjZ-edrJ9SlO15CTwK2hCpaOlUsKix5VLOnlJ/exec') {
     // Demo mode: simulate success
     console.table(data);
     await new Promise(r => setTimeout(r, 1200));
