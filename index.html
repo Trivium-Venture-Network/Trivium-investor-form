@@ -567,6 +567,94 @@
   .hint { font-size: 11px; color: var(--muted); margin-top: 4px; font-weight: 300; }
 
 
+
+  /* ── Radio groups ── */
+  .radio-group { display: flex; flex-direction: column; gap: 10px; }
+
+  .radio-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 16px;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: var(--bg);
+  }
+
+  .radio-item:hover { border-color: var(--tan-light); background: var(--white); }
+
+  .radio-item input[type="radio"] {
+    width: 16px; height: 16px;
+    accent-color: var(--brown);
+    flex-shrink: 0;
+    cursor: pointer;
+  }
+
+  .radio-item span { font-size: 13.5px; font-weight: 400; color: var(--text); }
+
+  .radio-item:has(input:checked) {
+    border-color: var(--brown);
+    background: rgba(67,51,41,0.04);
+  }
+
+  .other-input {
+    margin-top: 8px;
+    display: none;
+  }
+
+  .other-input.show { display: block; }
+
+  /* ── Legal section ── */
+  .legal-question { margin-bottom: 28px; }
+
+  .legal-label {
+    font-size: 13.5px;
+    font-weight: 400;
+    color: var(--text);
+    line-height: 1.65;
+    margin-bottom: 12px;
+    display: block;
+    text-transform: none;
+    letter-spacing: 0;
+  }
+
+  .legal-label a {
+    color: var(--brown);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    font-weight: 500;
+  }
+
+  .legal-label a:hover { color: var(--gold); }
+
+  .newsletter-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .newsletter-item:has(input:checked) {
+    border-color: var(--gold);
+    background: rgba(239,172,77,0.06);
+  }
+
+  .newsletter-item input[type="checkbox"] {
+    width: 16px; height: 16px;
+    accent-color: var(--gold);
+    flex-shrink: 0;
+  }
+
+  .newsletter-item span { font-size: 13.5px; color: var(--text); }
+  .newsletter-item a { color: var(--brown); font-weight: 500; text-decoration: underline; text-underline-offset: 3px; }
+
 </style>
 </head>
 <body>
@@ -645,19 +733,22 @@
         <div class="dot">03</div>
         <span class="step-label">Focus</span>
       </div>
+      <div class="step-dot" id="dot-4">
+        <div class="dot">04</div>
+        <span class="step-label">Legal</span>
+      </div>
     </div>
   </div>
 
   <!-- Form card -->
   <div class="form-card">
 
-    <!-- ── Step 1: Investor Profile ── -->
+    <!-- ── Step 1: Profile ── -->
     <div class="step-panel active" id="step-1">
       <div class="step-heading">
-        <span class="eyebrow">Step 1 of 3</span>
+        <span class="eyebrow">Step 1 of 4</span>
         <h2>Your Profile</h2>
       </div>
-
       <div class="field-grid">
         <div class="field">
           <label>First Name <span class="req">*</span></label>
@@ -675,88 +766,173 @@
           <span class="error-msg" id="err-email">Enter a valid email</span>
         </div>
         <div class="field">
-          <label>Phone</label>
+          <label>Phone <span class="req">*</span></label>
           <input type="tel" id="phone" placeholder="+1 (212) 000-0000">
+          <span class="error-msg" id="err-phone">Required</span>
+        </div>
+        <div class="field">
+          <label>Liberal Arts School <span class="req">*</span></label>
+          <select id="school">
+            <option value="">Select your school…</option>
+            <option>Agnes Scott College</option>
+            <option>Albion College</option>
+            <option>Allegheny College</option>
+            <option>Alma College</option>
+            <option>Amherst College</option>
+            <option>Austin College</option>
+            <option>Barnard College</option>
+            <option>Bates College</option>
+            <option>Beloit College</option>
+            <option>Berry College</option>
+            <option>Bowdoin College</option>
+            <option>Bryn Mawr College</option>
+            <option>Bucknell University</option>
+            <option>Carleton College</option>
+            <option>Centre College</option>
+            <option>Claremont McKenna College</option>
+            <option>Colby College</option>
+            <option>Colgate University</option>
+            <option>College of the Holy Cross</option>
+            <option>Colorado College</option>
+            <option>Connecticut College</option>
+            <option>Davidson College</option>
+            <option>Denison University</option>
+            <option>DePauw University</option>
+            <option>Dickinson College</option>
+            <option>Earlham College</option>
+            <option>Franklin & Marshall College</option>
+            <option>Furman University</option>
+            <option>Gettysburg College</option>
+            <option>Gordon College</option>
+            <option>Grinnell College</option>
+            <option>Guilford College</option>
+            <option>Hamilton College</option>
+            <option>Hampden-Sydney College</option>
+            <option>Hampshire College</option>
+            <option>Harvey Mudd College</option>
+            <option>Haverford College</option>
+            <option>Hobart and William Smith Colleges</option>
+            <option>Hope College</option>
+            <option>Juniata College</option>
+            <option>Kalamazoo College</option>
+            <option>Kenyon College</option>
+            <option>Knox College</option>
+            <option>Lafayette College</option>
+            <option>Lake Forest College</option>
+            <option>Lawrence University</option>
+            <option>Lewis & Clark College</option>
+            <option>Linfield University</option>
+            <option>Macalester College</option>
+            <option>Middlebury College</option>
+            <option>Mills College</option>
+            <option>Morehouse College</option>
+            <option>Mount Holyoke College</option>
+            <option>Muhlenberg College</option>
+            <option>Oberlin College</option>
+            <option>Occidental College</option>
+            <option>Ohio Wesleyan University</option>
+            <option>Pitzer College</option>
+            <option>Pomona College</option>
+            <option>Reed College</option>
+            <option>Rhodes College</option>
+            <option>Ripon College</option>
+            <option>Rollins College</option>
+            <option>Saint Anselm College</option>
+            <option>Sarah Lawrence College</option>
+            <option>Scripps College</option>
+            <option>Sewanee: The University of the South</option>
+            <option>Skidmore College</option>
+            <option>Smith College</option>
+            <option>Spelman College</option>
+            <option>St. John's College</option>
+            <option>St. Lawrence University</option>
+            <option>St. Olaf College</option>
+            <option>Swarthmore College</option>
+            <option>Trinity College</option>
+            <option>Union College</option>
+            <option>University of Richmond</option>
+            <option>Vassar College</option>
+            <option>Wabash College</option>
+            <option>Washington and Lee University</option>
+            <option>Washington College</option>
+            <option>Wellesley College</option>
+            <option>Wesleyan University</option>
+            <option>Wheaton College (IL)</option>
+            <option>Wheaton College (MA)</option>
+            <option>Whitman College</option>
+            <option>Williams College</option>
+            <option>Wittenberg University</option>
+            <option>Wofford College</option>
+            <option>Other / Not Listed</option>
+          </select>
+          <span class="error-msg" id="err-school">Required</span>
+        </div>
+
+        <div class="field">
+          <label>State <span class="req">*</span></label>
+          <select id="state">
+            <option value="">Select state…</option>
+            <option>AL</option><option>AK</option><option>AZ</option><option>AR</option>
+            <option>CA</option><option>CO</option><option>CT</option><option>DE</option>
+            <option>FL</option><option>GA</option><option>HI</option><option>ID</option>
+            <option>IL</option><option>IN</option><option>IA</option><option>KS</option>
+            <option>KY</option><option>LA</option><option>ME</option><option>MD</option>
+            <option>MA</option><option>MI</option><option>MN</option><option>MS</option>
+            <option>MO</option><option>MT</option><option>NE</option><option>NV</option>
+            <option>NH</option><option>NJ</option><option>NM</option><option>NY</option>
+            <option>NC</option><option>ND</option><option>OH</option><option>OK</option>
+            <option>OR</option><option>PA</option><option>RI</option><option>SC</option>
+            <option>SD</option><option>TN</option><option>TX</option><option>UT</option>
+            <option>VT</option><option>VA</option><option>WA</option><option>WV</option>
+            <option>WI</option><option>WY</option><option>Other / International</option>
+          </select>
+          <span class="error-msg" id="err-state">Required</span>
         </div>
         <div class="field full">
-          <label>Firm / Organization</label>
-          <input type="text" id="firm" placeholder="Sequoia Capital, Independent, Family Office...">
-        </div>
-        <div class="field">
-          <label>Investor Type <span class="req">*</span></label>
-          <select id="investorType">
-            <option value="">Select type…</option>
-            <option>Angel Investor</option>
-            <option>Venture Capital</option>
-            <option>Family Office</option>
-            <option>Corporate / Strategic</option>
-            <option>Institutional LP</option>
-            <option>Fund of Funds</option>
-            <option>Other</option>
-          </select>
-          <span class="error-msg" id="err-investorType">Required</span>
-        </div>
-        <div class="field">
-          <label>LinkedIn URL</label>
-          <input type="url" id="linkedin" placeholder="https://linkedin.com/in/...">
+          <label>Street Address <span class="req">*</span></label>
+          <input type="text" id="address" placeholder="123 Main St, City, State ZIP">
+          <span class="error-msg" id="err-address">Required</span>
         </div>
       </div>
-
       <div class="btn-row">
         <span></span>
         <button class="btn btn-primary" onclick="nextStep(1)">Continue →</button>
       </div>
     </div>
 
-    <!-- ── Step 2: Investment Parameters ── -->
+    <!-- ── Step 2: Investment ── -->
     <div class="step-panel" id="step-2">
       <div class="step-heading">
-        <span class="eyebrow">Step 2 of 3</span>
+        <span class="eyebrow">Step 2 of 4</span>
         <h2>Investment Parameters</h2>
       </div>
-
       <div class="field-grid">
         <div class="field">
-          <label>Check Size (USD) <span class="req">*</span></label>
+          <label>Average Check Size <span class="req">*</span></label>
           <select id="checkSize">
             <option value="">Select range…</option>
-            <option>$10K – $50K</option>
-            <option>$50K – $250K</option>
-            <option>$250K – $500K</option>
-            <option>$500K – $1M</option>
-            <option>$1M – $5M</option>
-            <option>$5M+</option>
+            <option>Up to $10K</option>
+            <option>$50K – $100K</option>
+            <option>$100K – $250K</option>
+            <option>$1M – $2M</option>
+            <option>$2M+</option>
           </select>
           <span class="error-msg" id="err-checkSize">Required</span>
         </div>
         <div class="field">
-          <label>Preferred Stage <span class="req">*</span></label>
-          <select id="stage">
-            <option value="">Select stage…</option>
-            <option>Pre-Seed</option>
-            <option>Seed</option>
-            <option>Series A</option>
-            <option>Series B+</option>
-            <option>Growth / Late Stage</option>
-            <option>Stage Agnostic</option>
+          <label>Largest Check Size <span class="req">*</span></label>
+          <select id="largestCheck">
+            <option value="">Select range…</option>
+            <option>Up to $10K</option>
+            <option>$50K – $100K</option>
+            <option>$100K – $250K</option>
+            <option>$1M – $2M</option>
+            <option>$2M+</option>
           </select>
-          <span class="error-msg" id="err-stage">Required</span>
+          <span class="error-msg" id="err-largestCheck">Required</span>
         </div>
         <div class="field full">
-          <label>Geographic Focus</label>
-          <select id="geography">
-            <option value="">Select region…</option>
-            <option>United States</option>
-            <option>North America</option>
-            <option>Europe</option>
-            <option>Asia-Pacific</option>
-            <option>Latin America</option>
-            <option>Middle East & Africa</option>
-            <option>Global / No Preference</option>
-          </select>
-        </div>
-        <div class="field full">
-          <label>Investments per Year (approx.)</label>
+          <label>Anticipated Investments per Year</label>
           <select id="dealFrequency">
             <option value="">Select…</option>
             <option>1 – 2</option>
@@ -766,73 +942,131 @@
             <option>20+</option>
           </select>
         </div>
-        <div class="field full">
-          <label>Prior Investment Experience</label>
-          <select id="experience">
-            <option value="">Select…</option>
-            <option>First-time investor</option>
-            <option>1 – 5 deals</option>
-            <option>6 – 15 deals</option>
-            <option>16 – 50 deals</option>
-            <option>50+ deals</option>
-          </select>
-        </div>
       </div>
-
       <div class="btn-row">
         <button class="btn btn-secondary" onclick="prevStep(2)">← Back</button>
         <button class="btn btn-primary" onclick="nextStep(2)">Continue →</button>
       </div>
     </div>
 
-    <!-- ── Step 3: Sector Focus & Notes ── -->
+    <!-- ── Step 3: Focus ── -->
     <div class="step-panel" id="step-3">
       <div class="step-heading">
-        <span class="eyebrow">Step 3 of 3</span>
-        <h2>Focus & Context</h2>
+        <span class="eyebrow">Step 3 of 4</span>
+        <h2>Investment Focus</h2>
       </div>
-
       <div class="field-grid">
         <div class="field full">
           <label>Sectors of Interest</label>
           <div class="checkbox-group" id="sectorGroup">
-            <label class="checkbox-item"><input type="checkbox" value="AI / ML"> <span>AI / ML</span></label>
-            <label class="checkbox-item"><input type="checkbox" value="Fintech"> <span>Fintech</span></label>
-            <label class="checkbox-item"><input type="checkbox" value="Healthtech"> <span>Healthtech</span></label>
-            <label class="checkbox-item"><input type="checkbox" value="Consumer"> <span>Consumer</span></label>
-            <label class="checkbox-item"><input type="checkbox" value="Enterprise SaaS"> <span>Enterprise SaaS</span></label>
-            <label class="checkbox-item"><input type="checkbox" value="Climate / Clean Energy"> <span>Climate / Clean Energy</span></label>
-            <label class="checkbox-item"><input type="checkbox" value="Deep Tech / Hardware"> <span>Deep Tech / Hardware</span></label>
-            <label class="checkbox-item"><input type="checkbox" value="Web3 / Crypto"> <span>Web3 / Crypto</span></label>
-            <label class="checkbox-item"><input type="checkbox" value="EdTech"> <span>EdTech</span></label>
-            <label class="checkbox-item"><input type="checkbox" value="Future of Work"> <span>Future of Work</span></label>
-            <label class="checkbox-item"><input type="checkbox" value="Defense / GovTech"> <span>Defense / GovTech</span></label>
-            <label class="checkbox-item"><input type="checkbox" value="Sector Agnostic"> <span>Sector Agnostic</span></label>
+            <label class="checkbox-item"><input type="checkbox" value="AI / Machine Learning"> <span>AI / Machine Learning</span></label>
+            <label class="checkbox-item"><input type="checkbox" value="Financial Services & Fintech"> <span>Financial Services &amp; Fintech</span></label>
+            <label class="checkbox-item"><input type="checkbox" value="Healthcare & Biotech"> <span>Healthcare &amp; Biotech</span></label>
+            <label class="checkbox-item"><input type="checkbox" value="Consumer Goods & Retail"> <span>Consumer Goods &amp; Retail</span></label>
+            <label class="checkbox-item"><input type="checkbox" value="Enterprise Software (SaaS)"> <span>Enterprise Software (SaaS)</span></label>
+            <label class="checkbox-item"><input type="checkbox" value="Climate & Clean Energy"> <span>Climate &amp; Clean Energy</span></label>
+            <label class="checkbox-item"><input type="checkbox" value="Hardware & Deep Tech"> <span>Hardware &amp; Deep Tech</span></label>
+            <label class="checkbox-item"><input type="checkbox" value="Prediction Markets & Crypto/Web3"> <span>Prediction Markets &amp; Crypto/Web3</span></label>
+            <label class="checkbox-item"><input type="checkbox" value="Education & EdTech"> <span>Education &amp; EdTech</span></label>
+            <label class="checkbox-item"><input type="checkbox" value="Media & Entertainment"> <span>Media &amp; Entertainment</span></label>
+            <label class="checkbox-item"><input type="checkbox" value="Real Estate & PropTech"> <span>Real Estate &amp; PropTech</span></label>
+            <label class="checkbox-item"><input type="checkbox" value="Agriculture & Food Tech"> <span>Agriculture &amp; Food Tech</span></label>
+            <label class="checkbox-item"><input type="checkbox" value="Defense & GovTech"> <span>Defense &amp; GovTech</span></label>
+            <label class="checkbox-item"><input type="checkbox" value="Sports & Fitness"> <span>Sports &amp; Fitness</span></label>
+            <label class="checkbox-item"><input type="checkbox" value="Legal & LegalTech"> <span>Legal &amp; LegalTech</span></label>
+            <label class="checkbox-item"><input type="checkbox" value="Supply Chain & Logistics"> <span>Supply Chain &amp; Logistics</span></label>
+            <label class="checkbox-item"><input type="checkbox" value="Manufacturing & Industry"> <span>Manufacturing &amp; Industry</span></label>
+            <label class="checkbox-item"><input type="checkbox" value="Social Impact & Nonprofits"> <span>Social Impact &amp; Nonprofits</span></label>
+            <label class="checkbox-item" style="grid-column:1/-1;border-color:var(--brown);"><input type="checkbox" value="Industry Agnostic"> <span style="font-weight:500;">Industry Agnostic</span></label>
           </div>
         </div>
-
-        <div class="field full">
-          <label>How Did You Hear About Us?</label>
-          <select id="referral">
-            <option value="">Select…</option>
-            <option>Existing Trivium Member</option>
-            <option>LinkedIn</option>
-            <option>Event / Conference</option>
-            <option>Warm Introduction</option>
-            <option>Website / Search</option>
-            <option>Other</option>
-          </select>
-        </div>
-
         <div class="field full">
           <label>Anything Else You'd Like Us to Know?</label>
           <textarea id="notes" placeholder="Co-investment preferences, value-add areas, portfolio companies, specific theses..."></textarea>
           <span class="hint">Optional — helps us match you with the most relevant opportunities.</span>
         </div>
       </div>
-
       <div class="btn-row">
         <button class="btn btn-secondary" onclick="prevStep(3)">← Back</button>
+        <button class="btn btn-primary" onclick="nextStep(3)">Continue →</button>
+      </div>
+    </div>
+
+    <!-- ── Step 4: Legal ── -->
+    <div class="step-panel" id="step-4">
+      <div class="step-heading">
+        <span class="eyebrow">Step 4 of 4</span>
+        <h2>Legal &amp; Membership</h2>
+      </div>
+
+      <!-- Q1: Accredited Investor -->
+      <div class="legal-question">
+        <span class="legal-label">Are you an accredited investor? <a href="https://www.investopedia.com/terms/a/accreditedinvestor.asp" target="_blank">Click here for the official requirements</a> <span class="req">*</span></span>
+        <div class="radio-group" id="accreditedGroup">
+          <label class="radio-item"><input type="radio" name="accredited" value="Yes"> <span>Yes</span></label>
+          <label class="radio-item"><input type="radio" name="accredited" value="No"> <span>No</span></label>
+          <label class="radio-item"><input type="radio" name="accredited" value="Other" onclick="toggleOther('accreditedOther')"> <span>Other</span></label>
+        </div>
+        <div class="other-input" id="accreditedOther">
+          <input type="text" placeholder="Please specify…">
+        </div>
+        <span class="error-msg" id="err-accredited">Required</span>
+      </div>
+
+      <!-- Q2: Legal Disclaimer -->
+      <div class="legal-question">
+        <span class="legal-label"><a href="https://docs.google.com/document/d/120tOBP8x5z3JUgDXSe5tHCTKqD_KqX-58zrJu5YT-Es/edit?tab=t.0" target="_blank">Legal Disclaimer</a> <span class="req">*</span><br>Yes, I have read and agree to the terms and conditions associated with doing business with Trivium Venture Network.</span>
+        <div class="radio-group" id="disclaimerGroup">
+          <label class="radio-item"><input type="radio" name="disclaimer" value="Agreed"> <span>Yes, I agree</span></label>
+          <label class="radio-item"><input type="radio" name="disclaimer" value="Other" onclick="toggleOther('disclaimerOther')"> <span>Other</span></label>
+        </div>
+        <div class="other-input" id="disclaimerOther">
+          <input type="text" placeholder="Please specify…">
+        </div>
+        <span class="error-msg" id="err-disclaimer">Required</span>
+      </div>
+
+      <!-- Q3: Membership Fee -->
+      <div class="legal-question">
+        <span class="legal-label">I understand that a <strong>$360 annual membership fee</strong> will be levied to maintain my membership. This fee is reimbursable if you make one or more angel investments each year. <span class="req">*</span></span>
+        <div class="radio-group" id="feeGroup">
+          <label class="radio-item"><input type="radio" name="fee" value="Yes"> <span>Yes, I understand</span></label>
+          <label class="radio-item"><input type="radio" name="fee" value="Other" onclick="toggleOther('feeOther')"> <span>Other</span></label>
+        </div>
+        <div class="other-input" id="feeOther">
+          <input type="text" placeholder="Please specify…">
+        </div>
+        <span class="error-msg" id="err-fee">Required</span>
+      </div>
+
+      <!-- Q4: Data Sharing -->
+      <div class="legal-question">
+        <span class="legal-label">Allow other investors in Trivium's Network to view the information provided in this form. <span class="req">*</span></span>
+        <div class="radio-group" id="sharingGroup">
+          <label class="radio-item"><input type="radio" name="sharing" value="Yes"> <span>Yes</span></label>
+          <label class="radio-item"><input type="radio" name="sharing" value="Yes, but not my contact information"> <span>Yes, but not my contact information</span></label>
+          <label class="radio-item"><input type="radio" name="sharing" value="No"> <span>No</span></label>
+          <label class="radio-item"><input type="radio" name="sharing" value="Other" onclick="toggleOther('sharingOther')"> <span>Other</span></label>
+        </div>
+        <div class="other-input" id="sharingOther">
+          <input type="text" placeholder="Please specify…">
+        </div>
+        <span class="error-msg" id="err-sharing">Required</span>
+      </div>
+
+      <!-- Q5: Newsletter -->
+      <div class="legal-question">
+        <span class="legal-label">Subscribe and share our newsletter, <a href="https://triviumventurenetwork.beehiiv.com/" target="_blank">The Liberal Arts Ledger</a></span>
+        <label class="newsletter-item">
+          <input type="checkbox" id="newsletter">
+          <span>Yes, sign me up for <a href="https://triviumventurenetwork.beehiiv.com/" target="_blank">The Liberal Arts Ledger</a></span>
+        </label>
+      </div>
+
+      <div class="hint" style="margin-bottom:20px;">Questions? Contact <a href="mailto:jshulman@triviumvn.com" style="color:var(--brown);font-weight:500;">jshulman@triviumvn.com</a></div>
+
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="prevStep(4)">← Back</button>
         <button class="btn btn-primary" id="submitBtn" onclick="submitForm()">Submit Application</button>
       </div>
     </div>
@@ -860,13 +1094,8 @@
 </div><!-- /page-wrapper -->
 
 <script>
-// ─────────────────────────────────────────────────────────────────────
-//  CONFIGURATION — replace this with your deployed Apps Script URL
-// ─────────────────────────────────────────────────────────────────────
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw54XlhRN-9UJcCprDpUJIEz6mgbqiEOp-DGfCUV5aXDNIg3plQz-Z9bXftvCiuc6f4/exec';
+const APPS_SCRIPT_URL = 'https://script.googleusercontent.com/a/macros/amherst.edu/echo?user_content_key=AWDtjMWIdWtfOkkAzl4NHKVo2Nqif1mgwZfTY7EkS4il41eL6nbY_m5HLEcMrlp4UPeOyN9OM5BFdXH9qg8lLZoO0CXLTrWyW0Tic-jyMOitYpcJD9f4xpNxUKiGAtjc0OumxNnsMqNhAgJPgSJuq8MCVyglHh6F4ZwErHeJPb5lv3wIAgXZXrI66XB0J1KJui87QTpNg5imEctHfv5UPB9jPHSbhV7N8ooJcb7KfuF7THP02S59awBQ0hTSjAY0FbboY3Yvw5_cWTOmL-i-qTDQMxFnghfAcQqtit4pMUfK5VvpfE6foz0A1jfrBZMJ3A&lib=M5p_iEw0t5NmSLBldFRweqdvGx8u9sHuQ';
 
-// Hide config banner once real URL is set
-// ─── Step navigation ───────────────────────────────────────────────
 function setStep(n) {
   document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.step-dot').forEach((d, i) => {
@@ -886,18 +1115,47 @@ function prevStep(current) {
   setStep(current - 1);
 }
 
-// ─── Validation ────────────────────────────────────────────────────
+function toggleOther(id) {
+  document.getElementById(id).classList.add('show');
+}
+
+// Hide other inputs when a non-other radio is selected
+document.addEventListener('change', e => {
+  if (e.target.type === 'radio' && e.target.value !== 'Other') {
+    const name = e.target.name;
+    const otherId = name + 'Other';
+    const el = document.getElementById(otherId);
+    if (el) el.classList.remove('show');
+  }
+});
+
 const required = {
-  1: ['firstName', 'lastName', 'email', 'investorType'],
-  2: ['checkSize', 'stage']
+  1: ['firstName', 'lastName', 'email', 'phone', 'school', 'state', 'address'],
+  2: ['checkSize', 'largestCheck'],
+  4: ['accredited', 'disclaimer', 'fee', 'sharing']
 };
 
 const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 function validateStep(step) {
   let ok = true;
+
+  // Standard field validation
   (required[step] || []).forEach(id => {
+    // Radio group validation
+    if (['accredited','disclaimer','fee','sharing'].includes(id)) {
+      const selected = document.querySelector(`input[name="${id}"]:checked`);
+      const err = document.getElementById('err-' + id);
+      if (!selected) {
+        if (err) err.classList.add('show');
+        ok = false;
+      } else {
+        if (err) err.classList.remove('show');
+      }
+      return;
+    }
     const el = document.getElementById(id);
+    if (!el) return;
     const err = document.getElementById('err-' + id);
     const val = el.value.trim();
     const invalid = !val || (id === 'email' && !emailRe.test(val));
@@ -905,10 +1163,10 @@ function validateStep(step) {
     if (err) err.classList.toggle('show', invalid);
     if (invalid) ok = false;
   });
+
   return ok;
 }
 
-// Clear errors on input
 document.querySelectorAll('input, select, textarea').forEach(el => {
   el.addEventListener('input', () => {
     el.classList.remove('error');
@@ -917,49 +1175,49 @@ document.querySelectorAll('input, select, textarea').forEach(el => {
   });
 });
 
-// ─── Get form data ─────────────────────────────────────────────────
+function getRadio(name) {
+  const el = document.querySelector(`input[name="${name}"]:checked`);
+  if (!el) return '';
+  if (el.value === 'Other') {
+    const other = document.getElementById(name + 'Other');
+    const input = other ? other.querySelector('input') : null;
+    return input ? ('Other: ' + input.value) : 'Other';
+  }
+  return el.value;
+}
+
 function getFormData() {
   const sectors = [...document.querySelectorAll('#sectorGroup input:checked')]
     .map(cb => cb.value).join(', ');
-
   return {
     timestamp:       new Date().toISOString(),
     firstName:       document.getElementById('firstName').value.trim(),
     lastName:        document.getElementById('lastName').value.trim(),
     email:           document.getElementById('email').value.trim(),
     phone:           document.getElementById('phone').value.trim(),
-    firm:            document.getElementById('firm').value.trim(),
+    school:          document.getElementById('school').value,
     investorType:    document.getElementById('investorType').value,
-    linkedin:        document.getElementById('linkedin').value.trim(),
+    state:           document.getElementById('state').value,
+    address:         document.getElementById('address').value.trim(),
     checkSize:       document.getElementById('checkSize').value,
-    stage:           document.getElementById('stage').value,
-    geography:       document.getElementById('geography').value,
+    largestCheck:    document.getElementById('largestCheck').value,
     dealFrequency:   document.getElementById('dealFrequency').value,
-    experience:      document.getElementById('experience').value,
     sectors:         sectors,
-    referral:        document.getElementById('referral').value,
     notes:           document.getElementById('notes').value.trim(),
+    accredited:      getRadio('accredited'),
+    disclaimer:      getRadio('disclaimer'),
+    fee:             getRadio('fee'),
+    sharing:         getRadio('sharing'),
+    newsletter:      document.getElementById('newsletter').checked ? 'Yes' : 'No',
   };
 }
 
-// ─── Submit ────────────────────────────────────────────────────────
 async function submitForm() {
   const btn = document.getElementById('submitBtn');
   btn.classList.add('loading');
   btn.textContent = 'Submitting';
-
   const data = getFormData();
-
-  if (APPS_SCRIPT_URL === 'YOUR_APPS_SCRIPT_URL_HERE') {
-    // Demo mode: simulate success
-    console.table(data);
-    await new Promise(r => setTimeout(r, 1200));
-    showSuccess(data);
-    return;
-  }
-
   try {
-    // Google Apps Script requires no-cors for simple POST
     await fetch(APPS_SCRIPT_URL, {
       method: 'POST',
       mode: 'no-cors',
@@ -970,7 +1228,7 @@ async function submitForm() {
   } catch (err) {
     btn.classList.remove('loading');
     btn.textContent = 'Submit Application';
-    alert('Submission error — please try again or email us directly.');
+    alert('Submission error — please try again or email jshulman@triviumvn.com');
     console.error(err);
   }
 }
