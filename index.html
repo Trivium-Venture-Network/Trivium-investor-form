@@ -1067,7 +1067,7 @@
 
       <div class="btn-row">
         <button type="button" class="btn btn-secondary" onclick="prevStep(4)">← Back</button>
-        <button class="btn btn-primary" id="submitBtn" onclick="submitForm()">Submit Application</button>
+        <button type="button" class="btn btn-primary" id="submitBtn" onclick="submitForm()">Submit Application</button>
       </div>
     </div>
 
@@ -1094,7 +1094,7 @@
 </div><!-- /page-wrapper -->
 
 <script>
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwQGk_G1ShV7d5-DGWy24ImgOP_hhRaA0dU4HyENb9Sv8ToSLwfuy5yF2owf9ZCs4x6/exec';
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbze1DaV5MXMqL2P7dXx8JrMGlYPqk7EhsFRF9rIpMRCodL3Z2Am_Ot2mqY_aqvNq9cz/exec';
 
 function setStep(n) {
   document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
@@ -1196,7 +1196,6 @@ function getFormData() {
     email:           document.getElementById('email').value.trim(),
     phone:           document.getElementById('phone').value.trim(),
     school:          document.getElementById('school').value,
-    investorType:    document.getElementById('investorType').value,
     state:           document.getElementById('state').value,
     address:         document.getElementById('address').value.trim(),
     checkSize:       document.getElementById('checkSize').value,
@@ -1212,28 +1211,29 @@ function getFormData() {
   };
 }
 
-async function submitForm() {
+function submitForm() {
   const btn = document.getElementById('submitBtn');
   btn.classList.add('loading');
   btn.textContent = 'Submitting...';
 
-  const data = getFormData();
+  // Always advance to success after 1.5s — no matter what
+  setTimeout(function() { showSuccess(); }, 1500);
 
-  // Send to Google Sheets — fire and forget
+  // Collect and send data — errors here won't block the UI
   try {
+    const data = getFormData();
     fetch(APPS_SCRIPT_URL, {
       method: 'POST',
       mode: 'no-cors',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)
     });
-  } catch(e) { console.error(e); }
-
-  // Always advance to success after 1.5s
-  setTimeout(function() { showSuccess(data); }, 1500);
+  } catch(e) {
+    console.error('Submit error:', e);
+  }
 }
 
-function showSuccess(data) {
+function showSuccess() {
   try {
     // Hide all step panels
     document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
