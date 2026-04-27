@@ -1213,13 +1213,15 @@ function getFormData() {
 }
 
 async function submitForm() {
+  // Validate step 4 first
+  if (!validateStep(4)) return;
+
   const btn = document.getElementById('submitBtn');
   btn.classList.add('loading');
   btn.textContent = 'Submitting';
   const data = getFormData();
 
-  // Fire and forget — no-cors means we can't read the response anyway
-  // Show success after short delay regardless
+  // Fire and forget — no-cors means we can never read the response
   fetch(APPS_SCRIPT_URL, {
     method: 'POST',
     mode: 'no-cors',
@@ -1227,7 +1229,7 @@ async function submitForm() {
     body: JSON.stringify(data)
   }).catch(err => console.error('Submission error:', err));
 
-  // Always advance to success after 1.2s
+  // Always show success after 1.2s regardless
   setTimeout(() => showSuccess(data), 1200);
 }
 
