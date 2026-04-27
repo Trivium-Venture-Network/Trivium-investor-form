@@ -1234,11 +1234,27 @@ async function submitForm() {
 }
 
 function showSuccess(data) {
-  document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
-  document.querySelector('.progress-container').style.display = 'none';
-  document.getElementById('successScreen').classList.add('show');
-  document.getElementById('successTime').textContent =
-    new Date().toLocaleString('en-US', { month: 'short', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+  try {
+    // Hide all step panels
+    document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
+    // Hide progress bar safely
+    const prog = document.querySelector('.progress-container');
+    if (prog) prog.style.display = 'none';
+    // Hide the submit button row
+    const btn = document.getElementById('submitBtn');
+    if (btn) btn.style.display = 'none';
+    // Show success screen
+    const screen = document.getElementById('successScreen');
+    screen.style.display = 'block';
+    screen.classList.add('show');
+    // Set timestamp
+    const timeEl = document.getElementById('successTime');
+    if (timeEl) timeEl.textContent = new Date().toLocaleString('en-US', { month: 'short', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+    // Scroll to top
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  } catch(e) {
+    console.error('showSuccess error:', e);
+  }
 }
 </script>
 
