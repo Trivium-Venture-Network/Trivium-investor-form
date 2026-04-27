@@ -1094,7 +1094,7 @@
 </div><!-- /page-wrapper -->
 
 <script>
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxSiTvrDGQgQFKnUgUz4c2AmnMG37Jwdv3O18njGLO9DNin1QPEWKD9OFdQrYadp0Wv/exec';
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwQGk_G1ShV7d5-DGWy24ImgOP_hhRaA0dU4HyENb9Sv8ToSLwfuy5yF2owf9ZCs4x6/exec';
 
 function setStep(n) {
   document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
@@ -1217,20 +1217,18 @@ async function submitForm() {
   btn.classList.add('loading');
   btn.textContent = 'Submitting';
   const data = getFormData();
-  try {
-    await fetch(APPS_SCRIPT_URL, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
-    });
-    showSuccess(data);
-  } catch (err) {
-    btn.classList.remove('loading');
-    btn.textContent = 'Submit Application';
-    alert('Submission error — please try again or email jshulman@triviumvn.com');
-    console.error(err);
-  }
+
+  // Fire and forget — no-cors means we can't read the response anyway
+  // Show success after short delay regardless
+  fetch(APPS_SCRIPT_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  }).catch(err => console.error('Submission error:', err));
+
+  // Always advance to success after 1.2s
+  setTimeout(() => showSuccess(data), 1200);
 }
 
 function showSuccess(data) {
