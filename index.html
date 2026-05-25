@@ -489,6 +489,47 @@
     vertical-align: middle;
   }
 
+  /* ── Stripe pay button ── */
+  .pay-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 26px;
+    margin: 14px 0 18px;
+    background: linear-gradient(135deg, var(--gold) 0%, #E89A35 100%);
+    color: var(--white);
+    border-radius: 10px;
+    text-decoration: none;
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    box-shadow: 0 4px 16px rgba(239,172,77,0.35);
+    transition: all 0.2s;
+  }
+
+  .pay-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 22px rgba(239,172,77,0.45);
+  }
+
+  .pay-button:active { transform: translateY(0); }
+
+  .pay-button svg {
+    width: 16px;
+    height: 16px;
+    stroke: var(--white);
+  }
+
+  .pay-button .amount {
+    font-family: 'DM Mono', monospace;
+    font-weight: 500;
+    background: rgba(255,255,255,0.18);
+    padding: 3px 9px;
+    border-radius: 5px;
+    font-size: 13px;
+  }
+
   /* ── Success screen ── */
   .success-screen {
     display: none;
@@ -1026,11 +1067,21 @@
         <span class="error-msg" id="err-disclaimer">Required</span>
       </div>
 
-      <!-- Q3: Membership Fee -->
+      <!-- Q3: Membership Fee + Stripe Payment -->
       <div class="legal-question">
-        <span class="legal-label">I understand that a <strong>$360 annual membership fee</strong> will be levied to maintain my membership. This fee is reimbursable if you make one or more angel investments each year. <span class="req">*</span></span>
+        <span class="legal-label">A <strong>$360 annual membership fee</strong> is required to maintain your membership. This fee is reimbursable if you make one or more angel investments each year. <span class="req">*</span></span>
+
+        <a href="https://buy.stripe.com/4gM28r03i93A4MJ4Rl6EU00" target="_blank" rel="noopener" class="pay-button">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="5" width="20" height="14" rx="2"/>
+            <line x1="2" y1="10" x2="22" y2="10"/>
+          </svg>
+          Pay membership fee via Stripe
+          <span class="amount">$360</span>
+        </a>
+
         <div class="radio-group" id="feeGroup">
-          <label class="radio-item"><input type="radio" name="fee" value="Yes"> <span>Yes, I understand</span></label>
+          <label class="radio-item"><input type="radio" name="fee" value="Paid"> <span>Done — I've completed payment</span></label>
           <label class="radio-item"><input type="radio" name="fee" value="Other" onclick="toggleOther('feeOther')"> <span>Other</span></label>
         </div>
         <div class="other-input" id="feeOther">
